@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot Application</title>
+</head>
+<body>
+    <h1>Users</h1>
+    <a th:href="@{/create}">Create User</a>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.age}"></td>
+            <td th:text="${user.email}"></td>
+            <td><a th:href="@{/edit/{id} (id=${user.id})}">Edit</a></td>
+            <td><a th:href="@{/delete/{id} (id=${user.id})}">Delete</a></td>
+        </tr>
+    </table>
+</body>
+</html>

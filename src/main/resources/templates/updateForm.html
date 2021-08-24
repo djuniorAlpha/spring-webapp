@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Spring Boot Application</title>
+</head>
+<body>
+<h1>Update User</h1>
+  <form method="post" th:object="${user}" th:action="@{/edit}">
+    <input type="hidden" th:field="*{id}" />
+
+    <label for="name">name</label>
+    <input id="name" type="text" th:field="*{name}" />
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+    <label for="age">age</label>
+    <input id="age" type="number" th:field="*{age}" />
+    <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+
+    <label for="email">email</label>
+    <input id="email" type="email" th:field="*{email}" />
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
+    <button type="submit">Update</button>
+  </form>
+</body>
+</html>
